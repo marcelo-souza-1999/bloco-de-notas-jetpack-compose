@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.google.ksp)
 }
 
 android {
@@ -30,6 +31,16 @@ android {
             )
         }
     }
+    android.applicationVariants.configureEach {
+        val variantName = name
+
+        kotlin.sourceSets {
+            getByName(variantName) {
+                kotlin.srcDir("build/generated/ksp/$variantName/kotlin")
+            }
+        }
+    }
+
     val javaVersion = libs.versions.java.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.toVersion(javaVersion)
@@ -63,8 +74,13 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.google.accompanist.system.ui.controller)
+    implementation(libs.datastore)
+    ksp(libs.koin.ksp.compiler)
+    implementation(libs.bundles.koin)
+    implementation(libs.bundles.coroutines)
 
     testImplementation(libs.junit)
+    testImplementation(libs.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

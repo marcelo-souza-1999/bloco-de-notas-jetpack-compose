@@ -3,4 +3,5 @@
     <string name="title_top_bar">Bloco de Notas</string>
     <string name="text_accessibility_floating_button">Salvar Anotação</string>
     <string name="txt_insert_annotation">Digite a sua anotação</string>
+    <string name="text_annotation_save_success">Anotação salva com sucesso!</string>
 </resources>
