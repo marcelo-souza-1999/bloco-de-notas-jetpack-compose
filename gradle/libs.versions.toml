@@ -41,14 +41,17 @@ datastore = { group = "androidx.datastore", name = "datastore-preferences", vers
 koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin"}
 koin-annotation = { group = "io.insert-koin", name = "koin-annotations", version.ref = "koin-annotations"}
 koin-ksp-compiler = { group = "io.insert-koin", name = "koin-ksp-compiler", version.ref = "koin-annotations"}
+koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin"}
+koin-test-junit = { group = "io.insert-koin", name = "koin-test-junit4", version.ref = "koin"}
 
 [bundles]
 coroutines = ["coroutines", "coroutines-core"]
 koin = ["koin", "koin-annotation"]
+koin-test = ["koin-test", "koin-test-junit"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-google_ksp = { id = "com.google.devtools.ksp", version.ref = "google-ksp" }
+google-ksp = { id = "com.google.devtools.ksp", version.ref = "google-ksp" }
 
