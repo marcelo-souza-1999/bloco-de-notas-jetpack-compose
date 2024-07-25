@@ -75,6 +75,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.google.accompanist.system.ui.controller)
     implementation(libs.datastore)
+    implementation(libs.androidx.lifecycle.runtime.compose.android)
     ksp(libs.koin.ksp.compiler)
     implementation(libs.bundles.koin)
     implementation(libs.bundles.coroutines)

@@ -25,11 +25,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
@@ -42,6 +39,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.marcelos.blocodenotas.R
 import com.marcelos.blocodenotas.presentation.theme.Black
 import com.marcelos.blocodenotas.presentation.theme.BlocoDeNotasTheme
@@ -50,6 +48,7 @@ import com.marcelos.blocodenotas.presentation.theme.White
 import com.marcelos.blocodenotas.presentation.theme.Yellow
 import com.marcelos.blocodenotas.presentation.viewmodel.MainViewModel
 import com.marcelos.blocodenotas.presentation.viewmodel.viewstate.State
+import com.marcelos.blocodenotas.utils.EMPTY_STRING
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
@@ -76,15 +75,15 @@ class MainActivity : ComponentActivity() {
     @Preview(showBackground = true, showSystemUi = false)
     @Composable
     private fun MainContent() {
-        var annotation by remember { mutableStateOf("") }
-        val viewStateGetAnnotation by viewModel.viewStateGetAnnotation.collectAsState()
-        val viewStateSaveAnnotation by viewModel.viewStateSaveAnnotation.collectAsState()
+        val annotation by viewModel.annotation.collectAsStateWithLifecycle()
+        val viewStateGetAnnotation by viewModel.viewStateGetAnnotation.collectAsStateWithLifecycle()
+        val viewStateSaveAnnotation by viewModel.viewStateSaveAnnotation.collectAsStateWithLifecycle()
         val focusRequester = remember { FocusRequester() }
         val context = LocalContext.current
 
         LaunchedEffect(viewStateGetAnnotation) {
             handleGetAnnotationSaved(viewStateGetAnnotation) { savedAnnotation ->
-                annotation = savedAnnotation
+                viewModel.updateAnnotation(savedAnnotation)
                 focusRequester.requestFocus()
             }
         }
@@ -98,7 +97,7 @@ class MainActivity : ComponentActivity() {
             ) {
                 CreateTxtFieldInsertAnnotation(
                     value = annotation,
-                    onValueChange = { annotation = it },
+                    onValueChange = { viewModel.updateAnnotation(it) },
                     focusRequester = focusRequester,
                     showLabel = annotation.isEmpty()
                 )
@@ -182,7 +181,7 @@ class MainActivity : ComponentActivity() {
             }
 
             is State.Loading -> {
-                updateAnnotation("")
+                updateAnnotation(EMPTY_STRING)
             }
         }
     }

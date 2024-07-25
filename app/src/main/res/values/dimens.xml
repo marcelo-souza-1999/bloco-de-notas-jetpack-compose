@@ -2,6 +2,6 @@
 <resources>
     <dimen name="size_8">8dp</dimen>
     <dimen name="size_16">16dp</dimen>
-    <dimen name="size_32">32dp</dimen>
     <dimen name="size_20">20dp</dimen>
+    <dimen name="size_32">32dp</dimen>
 </resources>
