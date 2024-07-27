@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             BlocoDeNotasTheme {
                 setupStatusBarNative()
-                MainContent()
+                AnnotationScreen()
             }
         }
     }
@@ -74,7 +74,7 @@ class MainActivity : ComponentActivity() {
 
     @Preview(showBackground = true, showSystemUi = false)
     @Composable
-    private fun MainContent() {
+    private fun AnnotationScreen() {
         val annotation by viewModel.annotation.collectAsStateWithLifecycle()
         val viewStateGetAnnotation by viewModel.viewStateGetAnnotation.collectAsStateWithLifecycle()
         val viewStateSaveAnnotation by viewModel.viewStateSaveAnnotation.collectAsStateWithLifecycle()
