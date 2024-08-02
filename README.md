@@ -12,7 +12,7 @@
 - **Koin Annotations**: Biblioteca de injeção de dependências.
 - **DataStore**: Solução para armazenamento de dados.
 - **JUnit**: Biblioteca de testes unitários.
-- **Espresso**: Ferramentas de teste de UI para Compose.
+- **Espresso**: Biblioteca de teste Instrumentados.
 - **MockK**: Biblioteca para criação de mocks em Kotlin.
 
 ## 📚 Estrutura do Projeto
