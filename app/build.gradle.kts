@@ -56,7 +56,9 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += setOf(
+                "/META-INF/{AL2.0,LGPL2.1,LICENSE.md,LICENSE.txt,LICENSE-notice.md,LICENSE-notice.txt}"
+            )
         }
     }
 
@@ -89,8 +91,8 @@ dependencies {
     testImplementation(libs.coroutines.test)
     testImplementation(libs.androidx.core.testing)
     testImplementation(libs.mockk.io)
-    testImplementation(libs.bundles.koin.test)
     testImplementation(libs.bundles.mockito.test)
+    androidTestImplementation(libs.bundles.koin.test)
     androidTestImplementation(libs.mockk.android)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

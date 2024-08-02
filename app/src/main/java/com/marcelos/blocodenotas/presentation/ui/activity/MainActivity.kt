@@ -26,10 +26,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
@@ -74,17 +71,15 @@ class MainActivity : ComponentActivity() {
 
     @Preview(showBackground = true, showSystemUi = false)
     @Composable
-    private fun AnnotationScreen() {
+    fun AnnotationScreen() {
         val annotation by viewModel.annotation.collectAsStateWithLifecycle()
         val viewStateGetAnnotation by viewModel.viewStateGetAnnotation.collectAsStateWithLifecycle()
         val viewStateSaveAnnotation by viewModel.viewStateSaveAnnotation.collectAsStateWithLifecycle()
-        val focusRequester = remember { FocusRequester() }
         val context = LocalContext.current
 
         LaunchedEffect(viewStateGetAnnotation) {
             handleGetAnnotationSaved(viewStateGetAnnotation) { savedAnnotation ->
                 viewModel.updateAnnotation(savedAnnotation)
-                focusRequester.requestFocus()
             }
         }
 
@@ -98,7 +93,6 @@ class MainActivity : ComponentActivity() {
                 CreateTxtFieldInsertAnnotation(
                     value = annotation,
                     onValueChange = { viewModel.updateAnnotation(it) },
-                    focusRequester = focusRequester,
                     showLabel = annotation.isEmpty()
                 )
             }
@@ -132,9 +126,13 @@ class MainActivity : ComponentActivity() {
         FloatingActionButton(
             onClick = {
                 fetchSaveAnnotation(annotation)
-            }, elevation = FloatingActionButtonDefaults.elevation(
+            },
+            elevation = FloatingActionButtonDefaults.elevation(
                 defaultElevation = dimensionResource(id = R.dimen.size_8)
-            ), shape = CircleShape, containerColor = Yellow
+            ),
+            shape = CircleShape, containerColor = Yellow,
+            modifier = Modifier
+                .testTag("floatingActionBtn")
         ) {
             Image(
                 imageVector = ImageVector.vectorResource(id = R.drawable.ic_save),
@@ -147,10 +145,10 @@ class MainActivity : ComponentActivity() {
     private fun CreateTxtFieldInsertAnnotation(
         value: String,
         onValueChange: (String) -> Unit,
-        focusRequester: FocusRequester,
         showLabel: Boolean
     ) {
-        TextField(value = value,
+        TextField(
+            value = value,
             onValueChange = onValueChange,
             colors = OutlinedTextFieldDefaults.colors(
                 cursorColor = Yellow, focusedLabelColor = White, unfocusedLabelColor = Black
@@ -161,8 +159,7 @@ class MainActivity : ComponentActivity() {
             modifier = Modifier
                 .testTag("txtInsertAnnotation")
                 .fillMaxHeight()
-                .fillMaxWidth()
-                .focusRequester(focusRequester),
+                .fillMaxWidth(),
             label = {
                 if (showLabel) {
                     Text(text = stringResource(R.string.txt_insert_annotation))
