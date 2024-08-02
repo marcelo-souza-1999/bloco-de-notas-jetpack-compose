@@ -7,6 +7,7 @@ para poder checar quando quiser.
 ## ⚙️ Tecnologias utilizadas
 
 - **Kotlin**: Linguagem principal de desenvolvimento.
+- **Jdk 21**: Versão do java usado no desenvolvimento.
 - **Jetpack Compose**: Framework para construção de UI nativa.
 - **Koin Annotations**: Biblioteca de injeção de dependências.
 - **DataStore**: Solução para armazenamento de dados.
