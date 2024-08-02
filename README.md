@@ -1,8 +1,8 @@
 # Bloco de Notas - Jetpack Compose
 
-> Este projeto foi desenvolvido com o objetivo de melhorar meus conhecimentos em desenvolvimento Android utilizando o Jetpack Compose.
-> A aplicação é igual a um bloco de notas que permite aos usuários realizar anotações e salvar as mesmas de forma local no dispositivo
-> para poder checar quando quiser.
+> Este projeto foi desenvolvido com o objetivo de melhorar meus conhecimentos em desenvolvimento
+> Android utilizando o Jetpack Compose. A aplicação é um bloco de notas que permite aos usuários
+> realizar anotações e salvá-las localmente no dispositivo para checá-las quando quiser.
 
 ## ⚙️ Tecnologias utilizadas
 
