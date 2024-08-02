@@ -40,7 +40,7 @@ class MainViewModel(
         _annotation.value = newAnnotation
     }
 
-    private fun getAnnotationSaved() = viewModelScope.launch {
+    fun getAnnotationSaved() = viewModelScope.launch {
         getAnnotationUseCase().collectViewState(_viewStateGetAnnotation)
     }
 }
