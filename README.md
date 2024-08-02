@@ -1,13 +1,13 @@
 # Bloco de Notas - Jetpack Compose
 
-Este projeto foi desenvolvido com o objetivo de melhorar meus conhecimentos em desenvolvimento Android utilizando o Jetpack Compose.
-A aplicação é igual a um bloco de notas que permite aos usuários realizar anotações e salvar as mesmas de forma local no dispositivo
-para poder checar quando quiser.
+> Este projeto foi desenvolvido com o objetivo de melhorar meus conhecimentos em desenvolvimento Android utilizando o Jetpack Compose.
+> A aplicação é igual a um bloco de notas que permite aos usuários realizar anotações e salvar as mesmas de forma local no dispositivo
+> para poder checar quando quiser.
 
 ## ⚙️ Tecnologias utilizadas
 
 - **Kotlin**: Linguagem principal de desenvolvimento.
-- **Jdk 21**: Versão do java usado no desenvolvimento.
+- **Jdk 21**: Versão do java usada no desenvolvimento.
 - **Jetpack Compose**: Framework para construção de UI nativa.
 - **Koin Annotations**: Biblioteca de injeção de dependências.
 - **DataStore**: Solução para armazenamento de dados.
@@ -49,7 +49,7 @@ Para contribuir com Bloco de Notas, siga estas etapas:
 4. Envie para o branch original: `git push origin <nome_do_projeto>/<local>`
 5. Crie a solicitação de pull.
 
-## Imagens do App
+## 📸 Imagens do App
 
 Aqui estão algumas capturas de tela do aplicativo
 
@@ -58,7 +58,7 @@ Aqui estão algumas capturas de tela do aplicativo
     <img src="imgs/second.jpeg" width="200"/>
 </p>
 
-### Contato
+## 📧 Contato
 
 - **Nome**: Marcelo Souza
 - **Email**: marcelocaregnatodesouza@gmail.com
