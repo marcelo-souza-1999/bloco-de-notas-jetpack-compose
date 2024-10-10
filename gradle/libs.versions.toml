@@ -20,7 +20,7 @@ lifecycleRuntimeComposeAndroid = "2.8.4"
 mockito-core = "5.0.0"
 mockito-kotlin = "4.0.0"
 mockk = "1.13.2"
-mockk-android = "1.13.2"
+mockk-android = "1.13.13"
 androidx-core-testing = "2.2.0"
 
 [libraries]
